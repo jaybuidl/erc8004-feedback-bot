@@ -1,0 +1,24 @@
+{
+  "events": [
+    {
+      "id": "0xabc123",
+      "agent": "0xagent1",
+      "amount": "1500",
+      "status": "registered",
+      "timestamp": 1740393600,
+      "transactionHash": "0xtx123",
+      "blockNumber": 1000,
+      "pgtcrId": 1
+    },
+    {
+      "id": "0xdef456",
+      "agent": "0xagent2",
+      "amount": "2000",
+      "status": "registered",
+      "timestamp": 1740479999,
+      "transactionHash": "0xtx456",
+      "blockNumber": 1001,
+      "pgtcrId": 1
+    }
+  ]
+}

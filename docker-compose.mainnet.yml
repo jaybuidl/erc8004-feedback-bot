@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    container_name: erc8004-feedback-bot-mainnet
+    restart: "no"
+    env_file:
+      - .env
+    environment:
+      - CHAIN=mainnet
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    command: ["node", "dist/src/index.js"]
+
+# One-shot execution:
+#   docker compose -f docker-compose.mainnet.yml run --rm bot

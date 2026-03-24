@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: test
+      GOLDSKY_ENDPOINT: https://example.com/graphql
+      PGTCR_REGISTRY_ADDRESS: 0x1111111111111111111111111111111111111111
+      REPUTATION_REGISTRY_ADDRESS: 0x2222222222222222222222222222222222222222
+      SEPOLIA_RPC: https://ethereum-sepolia-rpc.publicnode.com
+      PRIVATE_KEY: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+      DATABASE_PATH: ./test-data/ci.db
+      DRY_RUN: true
+      ENABLE_METRICS: false
+      MIN_AGE_HOURS: 72
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run test:unit
+      - run: npm run test:integration
+      - run: npm run test:e2e
+      - run: npm run build
+      - run: node scripts/validate-config.js

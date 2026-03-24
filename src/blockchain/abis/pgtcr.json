@@ -1,0 +1,5 @@
+[
+  "event AgentAdded(address indexed agent, uint256 amount, uint256 pgtcrId, uint256 timestamp)",
+  "event CollateralizationClosed(address indexed agent, uint256 amount, uint256 pgtcrId, uint256 timestamp)",
+  "event AgentChallenged(address indexed agent, uint256 amount, uint256 pgtcrId, uint256 timestamp)"
+]

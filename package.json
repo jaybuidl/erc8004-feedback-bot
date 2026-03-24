@@ -1,0 +1,60 @@
+{
+  "name": "erc8004-feedback-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automated feedback sender for ERC-8004 Reputation Registry based on Goldsky PGTCR data",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/src/index.js",
+    "start:once": "npm run build && node dist/src/index.js",
+    "dev": "ts-node src/index.ts",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "test": "npm run test:unit && npm run test:integration && npm run test:e2e",
+    "test:unit": "jest --testPathPattern=tests/unit",
+    "test:integration": "jest --testPathPattern=tests/integration",
+    "test:e2e": "jest --testPathPattern=tests/e2e",
+    "test:all": "npm run lint && npm run typecheck && npm test",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit",
+    "clean": "rm -rf dist",
+    "validate-config": "npm run build && node scripts/validate-config.js",
+    "preflight:sepolia": "node scripts/preflight-sepolia.js"
+  },
+  "keywords": [
+    "erc8004",
+    "kleros",
+    "pgtcr",
+    "reputation",
+    "ethereum",
+    "goldsky",
+    "sepolia"
+  ],
+  "author": "Krono",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ethers": "^6.16.0",
+    "express": "^4.19.2",
+    "graphql-request": "^6.1.0",
+    "prom-client": "^15.1.2",
+    "sqlite3": "^5.1.7",
+    "winston": "^3.14.2",
+    "winston-daily-rotate-file": "^4.7.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.10",
+    "@typescript-eslint/eslint-plugin": "^7.13.0",
+    "@typescript-eslint/parser": "^7.13.0",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

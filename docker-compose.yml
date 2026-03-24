@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    container_name: erc8004-feedback-bot
+    restart: "no"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    command: ["node", "dist/src/index.js"]
+
+# This compose file is for one-shot execution:
+#   docker compose run --rm bot
+# Schedule that command externally if you want recurring runs.

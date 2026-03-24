@@ -1,0 +1,36 @@
+[Unit]
+Description=ERC-8004 Feedback Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# Working directory - adjust to your deployment path
+WorkingDirectory=/opt/erc8004-feedback-bot
+# User/group to run as (create a dedicated user for security)
+User=erc8004
+Group=erc8004
+# Environment file
+EnvironmentFile=/opt/erc8004-feedback-bot/.env
+# Ensure NODE_ENV is production
+Environment=NODE_ENV=production
+# Command to run (use prebuilt dist)
+ExecStart=/usr/bin/node dist/src/index.js
+# Optional: Restart on failure (for transient errors). The bot exits 0 on success.
+Restart=on-failure
+RestartSec=10
+# Resource limits
+LimitNOFILE=65536
+# Logging to journal
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=erc8004-bot
+
+# Security hardening (optional, adjust based on your system)
+# PrivateTmp=true
+# ProtectSystem=strict
+# ReadWritePaths=/opt/erc8004-feedback-bot/data /opt/erc8004-feedback-bot/logs
+# NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

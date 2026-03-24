@@ -1,0 +1,16 @@
+[Unit]
+Description=Run ERC-8004 Feedback Bot every 30 minutes
+Requires=erc8004-feedback-bot.service
+After=erc8004-feedback-bot.service
+
+[Timer]
+# Run every 30 minutes
+OnCalendar=*-*-* *:0/30:00
+# Alternative: every 15 minutes
+# OnCalendar=*-*-* *:0/15:00
+Persistent=true
+# Randomized delay to avoid thundering herd (optional)
+RandomizedDelaySec=30
+
+[Install]
+WantedBy=timers.target
