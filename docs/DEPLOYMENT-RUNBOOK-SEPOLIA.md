@@ -35,6 +35,8 @@ Start from:
 cp .env.example .env
 ```
 
+`.env.example` is the canonical public sample. Keep a private local `.env` per host.
+
 Fill in:
 
 - `GOLDSKY_ENDPOINT_11155111`
@@ -145,7 +147,6 @@ For a sturdier setup, use `launchd`.
 Use Docker as a one-off execution target:
 
 ```bash
-docker compose build
 docker compose run --rm bot
 ```
 

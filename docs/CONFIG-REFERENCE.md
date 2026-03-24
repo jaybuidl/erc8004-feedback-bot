@@ -2,6 +2,8 @@
 
 This bot is configured entirely from env. The runtime is one-shot, so most operators only need a single `.env` plus an external scheduler.
 
+The canonical public sample file is `.env.example`.
+
 ## Required on real runs
 
 | Variable | Purpose |

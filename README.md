@@ -92,6 +92,8 @@ npm ci
 cp .env.example .env
 ```
 
+`.env.example` is the canonical public env sample for this repo.
+
 3. Validate with dry-run:
 
 ```bash
@@ -132,7 +134,7 @@ Run it as a one-off task:
 docker compose run --rm bot
 ```
 
-Do not use `docker compose up -d` as if it were a permanent service. The compose files are now documented for one-shot execution only.
+Do not use `docker compose up -d` as if it were a permanent service.
 
 ## Testing a new verified agent
 
